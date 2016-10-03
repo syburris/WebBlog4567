@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    {{#name}}
+    Hello, {{name}}!
+    <form action="/logout" method="post">
+        <button type="submit">Log Out</button>
+    </form>
+
+    {{/name}}
+
+    {{^name}}
+
+    {{/name}}
+</body>
+</html>

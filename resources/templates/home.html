@@ -14,6 +14,11 @@
     {{/name}}
 
     {{^name}}
+
+    <form action="/login" method="post">
+        <input type="text" placeholder="Enter Your Name" name="userName"><br>
+        <button type="submit">Login</button>
+    </form>
         Hello motha fucka hey, hi, how ya doin?
     {{/name}}
 </body>

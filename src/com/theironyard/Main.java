@@ -25,6 +25,28 @@ public class Main {
                 new MustacheTemplateEngine()
         );
 
+        Spark.get(
+                "/login",
+                (request, response) -> {
+                    return new ModelAndView(null,"login.html");
+                },
+                new MustacheTemplateEngine()
+        );
+
+        Spark.post(
+                "/login",
+                (request, response) -> {
+
+                    return null;
+                }
+        );
+        Spark.post(
+                "/logout",
+                (request, response) -> {
+                    response.redirect("/");
+                    return null;
+                }
+        );
 
 
     }

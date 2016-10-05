@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 public class Main {
 
     static HashMap<String, User> users = new HashMap<>();
-    static ArrayList<String> messages = new ArrayList<>();
+    static ArrayList<Message> messages = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -51,11 +51,12 @@ public class Main {
                 "/create-message",
                 (request, response) -> {
                     Session session = request.session();
-                    String name = request.queryParams("userName");
-                    session.attribute("userName", name);
-                    String message = request.queryParams("newMessage");
-//                  User user = users.get(name);
+                    String name = session.attribute("userName");
+                    String newMessage = request.queryParams("newMessage");
+                    Message message = new Message();
+                    message.setTheMessage(newMessage);
                     messages.add(message);
+                    session.attribute("userName", name);
                     response.redirect("/");
                     return null;
                 }

@@ -8,11 +8,11 @@ import spark.template.mustache.MustacheTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 public class Main {
 
     static HashMap<String, User> users = new HashMap<>();
-    static User user;
     static ArrayList<String> messages = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -43,6 +43,19 @@ public class Main {
                     Session session = request.session();
                     session.attribute("userName", name);
                     users.put(name,user);
+                    response.redirect("/");
+                    return null;
+                }
+        );
+        Spark.post(
+                "/create-message",
+                (request, response) -> {
+                    Session session = request.session();
+                    String name = request.queryParams("userName");
+                    session.attribute("userName", name);
+                    String message = request.queryParams("newMessage");
+//                  User user = users.get(name);
+                    messages.add(message);
                     response.redirect("/");
                     return null;
                 }

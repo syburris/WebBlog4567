@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Micro Blog Home</title>
 </head>
 <body>
     {{#name}}
     Hello, {{name}}!<br>
-    <form action="/logout" method="post">
-        <button type="submit">Log Out</button>
+        <form action="/logout" method="post">
+            <button type="submit">Log Out</button>
+        </form><br><br>
+
+    <form action="/create-message" method="post">
+        <input type="text" placeholder="Write a message" name="newMessage"/>
+        <button type="submit">Submit</button>
     </form>
 
+    Messages by {{name}}:<br>
+    <ol>
+        {{#messages}}
+        <li>{{.}}</li>
+        {{/messages}}
+    </ol>
     {{/name}}
 
     {{^name}}
-
     <form action="/login" method="post">
         <input type="text" placeholder="Enter Your Name" name="userName"/><br>
         <input type="password" placeholder="Enter Your Password" name="password"/>

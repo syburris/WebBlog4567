@@ -20,6 +20,9 @@ public class Main {
         Spark.get(
                 "/",
                 (request, response) -> {
+                    Session session = request.session();
+                    String name = session.attribute("userName");
+                    User user = users.get(name);
                     HashMap m = new HashMap();
                     if (user != null) {
                         m.put("name", user.name);
@@ -28,7 +31,6 @@ public class Main {
                 },
                 new MustacheTemplateEngine()
         );
-
         Spark.post(
                 "/login",
                 (request, response) -> {
@@ -38,9 +40,8 @@ public class Main {
                         user = new User(name);
                         users.put(name,user);
                     }
-
-//                    Session session = request.session();
-//                    session.attribute("userName", name);
+                    Session session = request.session();
+                    session.attribute("userName", name);
                     users.put(name,user);
                     response.redirect("/");
                     return null;
@@ -49,6 +50,8 @@ public class Main {
         Spark.post(
                 "/logout",
                 (request, response) -> {
+                    Session session = request.session();
+                    session.invalidate();
                     response.redirect("/");
                     return null;
                 }

@@ -7,9 +7,9 @@
 <body>
     {{#name}}
     Hello, {{name}}!<br>
-        <form action="/logout" method="post">
-            <button type="submit">Log Out</button>
-        </form><br><br>
+        <!--<form action="/logout" method="post">-->
+            <!--<button type="submit">Log Out</button>-->
+        <!--</form><br><br>-->
 
     <form action="/create-message" method="post">
         <input type="text" placeholder="Write a message" name="newMessage"/>
@@ -18,10 +18,14 @@
 
     Messages by {{name}}:<br>
     <ol>
-        <!--{{#messages}}-->
-        <li>{{.}}</li>
-        <!--{{/messages}}-->
+        {{#messages}}
+        <li>{{text}}</li>
+        {{/messages}}
     </ol>
+
+    <form action="/logout" method="post">
+        <button type="submit">Log Out</button>
+    </form>
     {{/name}}
 
     {{^name}}

@@ -13,11 +13,11 @@ public class Message {
         this.text = text;
     }
 
-    public String getTheMessage() {
+    public String getText() {
         return text;
     }
 
-    public void setTheMessage(String text) {
+    public void setText(String text) {
         this.text = text;
     }
 }

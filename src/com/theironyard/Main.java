@@ -52,8 +52,11 @@ public class Main {
                 (request, response) -> {
                     Session session = request.session();
                     String name = session.attribute("userName");
+                    User user = users.get(name);
                     Message message = new Message(request.queryParams("newMessage"));
                     messages.add(message);
+                    ArrayList<Message> userMessages = user.messages;
+                    userMessages.add(message);
                     session.attribute("userName", name);
                     response.redirect("/");
                     return null;
@@ -68,7 +71,5 @@ public class Main {
                     return null;
                 }
         );
-
-
     }
 }

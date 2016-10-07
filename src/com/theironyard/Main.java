@@ -25,6 +25,7 @@ public class Main {
                     HashMap m = new HashMap();
                     if (user != null) {
                         m.put("name", user.name);
+//                        m.put("name",user.messages);
                     }
                     return new ModelAndView(m, "home.html");
                 },

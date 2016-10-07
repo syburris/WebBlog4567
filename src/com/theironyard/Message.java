@@ -9,15 +9,15 @@ public class Message {
     public Message() {
     }
 
-    public Message(String theMessage) {
-        this.text = theMessage;
+    public Message(String text) {
+        this.text = text;
     }
 
     public String getTheMessage() {
         return text;
     }
 
-    public void setTheMessage(String theMessage) {
-        this.text = theMessage;
+    public void setTheMessage(String text) {
+        this.text = text;
     }
 }

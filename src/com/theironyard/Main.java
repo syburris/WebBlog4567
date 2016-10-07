@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Main {
 
     static HashMap<String, User> users = new HashMap<>();
-    static ArrayList<Message> messages = new ArrayList<>();
+    static ArrayList<Message> messages1 = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -53,7 +53,7 @@ public class Main {
                     String name = session.attribute("userName");
                     User user = users.get(name);
                     Message message = new Message(request.queryParams("newMessage"));
-                    messages.add(message);
+                    messages1.add(message);
                     ArrayList<Message> userMessages = user.messages;
                     userMessages.add(message);
                     session.attribute("userName", name);

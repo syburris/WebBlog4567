@@ -9,10 +9,19 @@ import java.util.ArrayList;
 public class User {
     String name;
     String password;
+    ArrayList<Message> messages = new ArrayList<>();
 
+    public User() {
+    }
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, String password, ArrayList<Message> messages) {
+        this.name = name;
+        this.password = password;
+        this.messages = messages;
     }
 
     public String getName() {
@@ -31,4 +40,11 @@ public class User {
         this.password = password;
     }
 
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
 }

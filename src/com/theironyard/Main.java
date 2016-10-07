@@ -53,7 +53,7 @@ public class Main {
                     Session session = request.session();
                     String name = session.attribute("userName");
                     String newMessage = request.queryParams("newMessage");
-                    Message message = new Message();
+                    Message message = new Message(request.queryParams("newMessage"));
                     message.setTheMessage(newMessage);
                     messages.add(message);
                     session.attribute("userName", name);
